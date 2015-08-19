@@ -40,26 +40,44 @@ public class NoteModel {
        new Thread(new Runnable() {
            @Override
            public void run() {
-//               AVACL acl = new AVACL();
-//               acl.setPublicWriteAccess(false);
-//               acl.setPublicReadAccess(true);
-//               acl.setRoleWriteAccess("publisher",true);
                Note note = new Note();
-               note.SetName("今天的");
-               note.SetDate("2015-08-16");
-               note.SetMMUrl("wwww.baidu.com");
-
-               for(int i = 0 ; i < 5;i++)
-               {
-                   final NoteItem noteItem = new NoteItem();
-                   noteItem.SetName(String.valueOf(i));
-                   for(int j = 0 ; j < 5;j++)
+               note.SetName("酷日炎炎的一天");
+               note.SetDate("2015-08-19");
+               note.SetMMUrl("http://ac-fkysmqq7.clouddn.com/52c57ab96843408d.jpg");
+               {//Android
+                   NoteItem noteItem = new NoteItem();
+                   noteItem.SetName("Android");
                    {
-                       final Item item = new Item();
-                       item.SetName(j + "item");
-                       item.SetURL("j" + "wwww");
+                       Item item = new Item();
+                       item.SetName("一款基于Google Material Design设计开发的Android客户端，包括新闻简读，图片浏览，视频爽看 ，音乐轻听以及二维码扫描五个子模块，项目采取的是MVP架构开发");
+                       item.SetURL("https://github.com/SkillCollege/SimplifyReader");
                        try {
-                           //item.setACL(acl);
+                           item.save();
+                       } catch (AVException e) {
+                           Message msg = new Message();
+                           msg.obj = "创建失败：" + e.getMessage();
+                           mHandler.sendMessage(msg);
+                       }
+                       noteItem.AddItem(item);
+                   }
+                   {
+                       Item item = new Item();
+                       item.SetName("一组资源组成背景动画");
+                       item.SetURL("https://github.com/tslamic/FancyBackground");
+                       try {
+                           item.save();
+                       } catch (AVException e) {
+                           Message msg = new Message();
+                           msg.obj = "创建失败：" + e.getMessage();
+                           mHandler.sendMessage(msg);
+                       }
+                       noteItem.AddItem(item);
+                   }
+                   {
+                       Item item = new Item();
+                       item.SetName("有一个漂亮的城市选择组件");
+                       item.SetURL("https://github.com/gugalor/citylist");
+                       try {
                            item.save();
                        } catch (AVException e) {
                            Message msg = new Message();
@@ -69,7 +87,58 @@ public class NoteModel {
                        noteItem.AddItem(item);
                    }
                    try {
-                      // note.setACL(acl);
+                       noteItem.save();
+                   } catch (AVException e) {
+                       Message msg = new Message();
+                       msg.obj = "创建失败：" + e.getMessage();
+                       mHandler.sendMessage(msg);
+                   }
+                   note.AddNoteItem(noteItem);
+               }
+               {//IOS
+
+                   NoteItem noteItem = new NoteItem();
+                   noteItem.SetName("IOS");
+                   {
+                       Item item = new Item();
+                       item.SetName("Swift 语言指南－Issue 37");
+                       item.SetURL("https://github.com/ipader/SwiftGuide/blob/master/weekly/Issue-37.md");
+                       try {
+                           item.save();
+                       } catch (AVException e) {
+                           Message msg = new Message();
+                           msg.obj = "创建失败：" + e.getMessage();
+                           mHandler.sendMessage(msg);
+                       }
+                       noteItem.AddItem(item);
+                   }
+                   {
+                       Item item = new Item();
+                       item.SetName("4个你应该知道的 Asset Catalog 小技巧");
+                       item.SetURL("http://krakendev.io/blog/4-xcode-asset-catalog-secrets-you-need-to-know");
+                       try {
+                           item.save();
+                       } catch (AVException e) {
+                           Message msg = new Message();
+                           msg.obj = "创建失败：" + e.getMessage();
+                           mHandler.sendMessage(msg);
+                       }
+                       noteItem.AddItem(item);
+                   }
+                   {
+                       Item item = new Item();
+                       item.SetName("When to Use Swift Structs and Classes");
+                       item.SetURL("http://yulingtianxia.com/blog/2015/08/12/When-to-Use-Swift-Structs-and-Classes/");
+                       try {
+                           item.save();
+                       } catch (AVException e) {
+                           Message msg = new Message();
+                           msg.obj = "创建失败：" + e.getMessage();
+                           mHandler.sendMessage(msg);
+                       }
+                       noteItem.AddItem(item);
+                   }
+                   try {
                        noteItem.save();
                    } catch (AVException e) {
                        Message msg = new Message();
@@ -79,7 +148,6 @@ public class NoteModel {
                    note.AddNoteItem(noteItem);
                }
                try {
-                  // note.setACL(acl);
                    note.save();
                    Message msg = new Message();
                    msg.obj = "创建成功！";
