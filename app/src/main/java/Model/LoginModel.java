@@ -12,7 +12,7 @@ import Interface.NormalCallback;
 public class LoginModel {
     public static void Login(final NormalCallback callback)
     {
-        AVUser.logInInBackground("zzky0010", "zouzijian", new LogInCallback() {
+        AVUser.logInInBackground("zzky0020", "zouzijian", new LogInCallback() {
             public void done(AVUser user, AVException e) {
                 if (user != null) {
                     // 登录成功

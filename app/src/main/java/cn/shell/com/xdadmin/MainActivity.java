@@ -16,6 +16,7 @@ import com.avos.avoscloud.SignUpCallback;
 import Interface.NormalCallback;
 import Model.LoginModel;
 import Model.NoteModel;
+import Model.QueryModel;
 import Model.RegisterModel;
 import Model.RoleModel;
 
@@ -36,13 +37,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void OnCallBack(String msg) {
                         OnShowMessage(msg);
-                        NoteModel noteModel = new NoteModel();
-                        noteModel.Create_InsetNote(new NormalCallback() {
-                            @Override
-                            public void OnCallBack(String msg) {
-                                OnShowMessage(msg);
-                            }
-                        });
+                        QueryModel.QueryAllNotes();
                     }
                 });
 
